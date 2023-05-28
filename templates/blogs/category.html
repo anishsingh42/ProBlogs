@@ -1,0 +1,69 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{%block title%} {{category.title}} {%endblock%}
+{% block css %}
+<style>
+
+.like_icon{
+    width: 20px;
+    height: auto;
+}
+.text-muted-light{
+    color: #a0a2a3!important;
+}
+.trending-link,
+.post-link,
+.cat-link{
+    text-decoration: none;
+    color: black;
+}
+.img-post{
+    width: 200px;
+    height: 130px;
+}
+.img-post img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+</style>
+{%endblock%}
+{% block content %}
+<div class="container mt-5">
+  <h2>Category: {{ category.title }}</h2>
+  {% if posts %}
+    {% for post in posts %}
+    <div class="card m-3 shadow">
+      <div class="row g-0">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <a href="/blogs/{{post.post_url}}" class="post-link">
+            <img src="/media/{{ post.image_post }}" class="img-fluid rounded img-post" alt="{{ post.title }} Image">
+          </a>
+        </div>
+        <div class="col-md-8">
+          <a href="/blogs/{{post.post_url}}" class="post-link">
+            <div class="card-body">
+              <p class="text-muted-light">Written by {{ post.post_author }} on {{post.post_created_at}}</p>
+              <h5 class="card-title fw-bold">{{ post.title | truncatewords:15 }}</h5>
+              <p class="card-text">{{ post.content | truncatewords:20 | safe}}</p>
+              
+            </div>
+          </a>
+          <div class="mt-auto mb-3 mx-3 my-3">
+              <div class="text-end">
+                <img src="../../media/logo/like-icon.jpg" alt="like-icon" class="like_icon">
+                <span class="badge bg-dark">{{post.likes.count}}</span>
+                <span class="badge " style="background-color: purple
+                ; color: whitesmoke;">{{ post.category_name }}</span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  {% else %}
+    <p>No posts found under this category.</p>
+  {% endif %}
+</div>
+{% endblock %}

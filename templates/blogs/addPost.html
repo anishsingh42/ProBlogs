@@ -1,0 +1,53 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{%block title%} {{post.title}} {%endblock%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+
+<style>
+    .btn-purple {
+    background-color: purple;
+    color: white;
+    transition: background-color 0.3s, color 0.3s; 
+  }
+  
+  .btn-purple:hover {
+    background-color: #8a3fa3; 
+    color: white;
+  }
+</style>
+{%endblock%}
+{% block content %}
+<div class="container mt-5">
+  <form method="POST" action="{% url 'blogs:add_post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="title">Title:</label>
+      {{ form.title }}
+    </div>
+    <div class="form-group">
+      <label for="content">Content:</label>
+      {{ form.content }}
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      {{ form.category }}
+    </div>
+    <div class="form-group">
+      <label for="image_post">Image:</label>
+      {{ form.image_post }}
+    </div>
+    <div class="form-group">
+      <label for="post_url">Post URL:</label>
+      {{ form.post_url }}
+    </div>
+    <div class="form-group">
+      <label for="post_author">Author:</label>
+      {{ form.post_author }}
+    </div>
+    <button type="submit" class="btn btn-purple mt-5">Add Post</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{%block title%} ProBlogs-Login {%endblock%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{%endblock%}
+
+{% block navbar_btns %}
+<ul class="navbar-nav ms-auto me-2 mb-2 mb-sm-0">
+    <li class="nav-item">
+      <a class="nav-link active mx-3 fs-5 text-black text-center" aria-current="page" href="/">Home</a>
+    </li>
+</ul>
+{%endblock%}
+
+{% block content %}
+<div class="container shadow mt-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6">
+        <div class="text-center mb-5 mt-5">
+          <img src="../../media/logo/login.png" alt="login">
+        </div>
+        {% if messages %}
+          <div class="alert alert-info">
+            <ul class="messages">
+              {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        <form action="" method="post">
+          {%csrf_token%}
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Username"> 
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password"> 
+          </div>
+          <div class="text-center mb-5">
+            <button type="submit" class="btn btn-purple">Login</button>
+            <a href="/signup" class="d-block text-start">Don't have an account? Sign up!</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

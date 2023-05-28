@@ -1,0 +1,33 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{%block title %} About {%endblock%}
+
+{%block content%}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="text-center">
+              <img src="../../media/logo/anish_singh.png" alt="anish-singh" class="img-thumbnail rounded-circle" style="width: 200px; height: 200px;">
+            </div>
+            <p class="card-text">
+              Hello, I'm Anish Singh, an undergraduate from Kalinga Institute of Industrial Technology. I have a web developer and uses Django as my tech stack. I love exploring new technologies. I have a keen interest in web development, machine learning, and artificial intelligence.
+            </p>
+            <p class="card-text">
+              On this blogging site, I aim to provide informative and valuable content to the readers. I cover various topics related to technology, programming, and personal development. I hope you find my blogs useful and interesting.
+            </p>
+            <p class="card-text">
+              Thank you for visiting my blog and supporting my work. Stay tuned for more interesting articles!
+            </p>
+            <div class="text-center mt-4">
+              <a href="https://www.linkedin.com/in/anish-singh-9988a419a/" target="_blank" class="btn btn-primary me-2">LinkedIn</a>
+              <a href="https://github.com/anishsingh42" target="_blank" class="btn btn-dark">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{%endblock%}

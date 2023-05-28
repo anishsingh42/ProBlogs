@@ -1,0 +1,54 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{%block title%} {{post.title}} {%endblock%}
+{%block css%}
+<style>
+    .btn-purple {
+    background-color: purple;
+    color: white;
+    transition: background-color 0.3s, color 0.3s; 
+  }
+  
+  .btn-purple:hover {
+    background-color: #8a3fa3; 
+    color: white;
+  }
+  
+  .like_icon{
+    width: 20px;
+    height: auto;
+  }
+</style>
+{%endblock%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="my-4">{{post.title | safe}}</h1>
+            <p class="lead">Written by <span class="text-muted">{{post.post_author | safe}}</span></p>
+            <p class="text-muted">Posted on {{post.post_created_at}}</p>
+            <hr>
+            <img src="/media/{{post.image_post}}" class="img-fluid rounded mb-4 mx-auto d-block" alt="{{post.title}} Image" style="width:500px; height: auto;">
+            <hr>
+            <p>{{post.content | safe}}</p>
+            <hr>
+            <div class="mt-auto mb-3 mx-3 my-3">
+              <div class="text-end">
+                {% if user.is_authenticated %}
+                    <form action="{% url 'blogs:like_post' post.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-purple btn-sm" type="submit">
+                            {% if user in post.likes.all %}
+                                Unlike - {{post.likes.count}}
+                            {% else %}
+                                Like - {{post.likes.count}}
+                            {% endif %}
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
+            <a href="/" class="btn btn-purple mb-5">Back to Blog</a>
+        </div>
+    </div>
+</div>
+{%endblock%}

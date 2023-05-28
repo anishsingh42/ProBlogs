@@ -1,0 +1,72 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{% block title %} ProBlogs-Signup {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{%endblock%}
+
+{% block navbar_btns %}
+<ul class="navbar-nav ms-auto me-2 mb-2 mb-sm-0">
+    <li class="nav-item">
+      <a class="nav-link active mx-3 fs-5 text-black text-center" aria-current="page" href="/">Home</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="container shadow mt-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6">
+        <div class="text-center mb-4">
+          <img src="../../media/logo/login.png" alt="signup">
+        </div>
+        {% if messages %}
+        <div class="alert alert-danger">
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name" required> 
+          </div>
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter your Last Name" required> 
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required> 
+          </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Username" required> 
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required> 
+          </div>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your Password" required> 
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+            <label class="form-check-label" for="terms">I agree to the Terms and Conditions</label>
+          </div>
+          <div class="text-center mb-5">
+            <button type="submit" class="btn btn-purple">Sign Up</button>
+            <a href="/login" class="d-block text-start">Already have an Account? Login!</a>  
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
