@@ -30,5 +30,6 @@ To run the ProBlogs project locally, follow these steps:
 4. Run database migrations: ``` python manage.py migrate ```
 5. Start the development server: ``` python manage.py runserver ```
 6. Access the application in your web browser: ``` python manage.py runserver ```
-##Contributing
+
+## Contributing
 Contributions to ProBlogs are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue on the GitHub repository.
