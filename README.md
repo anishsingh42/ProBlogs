@@ -26,4 +26,9 @@ To run the ProBlogs project locally, follow these steps:
 1. Clone the repository:
    ```git clone https://github.com/your-username/problogs.git ```
 2. Navigate to the project directory: cd problogs
-3. 
+3. Install the required dependencies: ```pip install -r requirements.txt ```
+4. Run database migrations: ``` python manage.py migrate ```
+5. Start the development server: ``` python manage.py runserver ```
+6. Access the application in your web browser: ``` python manage.py runserver ```
+##Contributing
+Contributions to ProBlogs are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue on the GitHub repository.
